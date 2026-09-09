@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+enum StatutColis {
+  EN_ATTENTE
+  PRIS_EN_CHARGE
+  EN_TRANSIT
+  EN_LIVRAISON
+  LIVRE
+  ECHEC_LIVRAISON
+  ANNULE
+}
+
+enum StatutDevis {
+  NOUVEAU
+  EN_COURS
+  TRAITE
+  REFUSE
+}
+
+model User {
+  id           String         @id @default(cuid())
+  name         String
+  email        String         @unique
+  passwordHash String
+  role         Role           @default(CLIENT)
+  phone        String?
+  createdAt    DateTime       @default(now())
+  parcels      Parcel[]
+  quoteRequests QuoteRequest[]
+}
+
+model Parcel {
+  id                 String          @id @default(cuid())
+  trackingNumber     String          @unique
+  senderName         String
+  senderAddress      String
+  recipientName      String
+  recipientAddress   String
+  recipientPhone     String?
+  notifyEmail        String?
+  description        String?
+  weightKg           Float?
+  status             StatutColis     @default(EN_ATTENTE)
+  currentLocation    String?
+  estimatedDelivery  DateTime?
+  client             User?           @relation(fields: [clientId], references: [id])
+  clientId           String?
+  events             TrackingEvent[]
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+}
+
+model TrackingEvent {
+  id        String      @id @default(cuid())
+  parcel    Parcel      @relation(fields: [parcelId], references: [id], onDelete: Cascade)
+  parcelId  String
+  status    StatutColis
+  location  String?
+  note      String?
+  createdAt DateTime    @default(now())
+}
+
+model QuoteRequest {
+  id              String      @id @default(cuid())
+  name            String
+  email           String
+  phone           String
+  pickupAddress   String
+  deliveryAddress String
+  packageDetails  String
+  status          StatutDevis @default(NOUVEAU)
+  adminNote       String?
+  client          User?       @relation(fields: [clientId], references: [id])
+  clientId        String?
+  createdAt       DateTime    @default(now())
+}
