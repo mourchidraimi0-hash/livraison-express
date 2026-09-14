@@ -1,30 +1,35 @@
 import Link from "next/link";
 import TrackingForm from "@/components/TrackingForm";
+import FeatureIcon, { type FeatureIconName } from "@/components/FeatureIcon";
 
-const FEATURES = [
+const FEATURES: {
+  title: string;
+  description: string;
+  icon: FeatureIconName;
+}[] = [
   {
     title: "Suivi en temps réel",
     description:
       "Suivez chaque étape de votre colis, de la prise en charge à la livraison, grâce à un numéro de suivi unique.",
-    icon: "🚚",
+    icon: "truck",
   },
   {
     title: "Livraison rapide",
     description:
       "Un réseau optimisé pour livrer vos colis en toute sécurité, dans les meilleurs délais, partout où vous êtes.",
-    icon: "⚡",
+    icon: "bolt",
   },
   {
     title: "Espace client",
     description:
       "Créez un compte pour retrouver l'historique de tous vos envois et de vos demandes de devis à tout moment.",
-    icon: "👤",
+    icon: "user",
   },
   {
     title: "Devis rapide",
     description:
       "Décrivez votre envoi et recevez une prise en charge rapide de notre équipe pour organiser l'enlèvement.",
-    icon: "📋",
+    icon: "clipboard",
   },
 ];
 
@@ -111,7 +116,7 @@ export default function Home() {
               key={feature.title}
               className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
-              <div className="text-3xl">{feature.icon}</div>
+              <FeatureIcon name={feature.icon} />
               <h3 className="mt-4 font-semibold text-brand">
                 {feature.title}
               </h3>
