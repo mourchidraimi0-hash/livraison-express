@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getSession } from "@/lib/auth";
 import { logoutAction } from "@/app/actions/auth";
 
@@ -9,17 +10,14 @@ export default async function Header() {
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2 text-brand">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-white">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M3 7l9-4 9 4-9 4-9-4Zm0 0v10l9 4m0-14v14m0-14 9 4v10l-9 4"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+          <Image
+            src="/logo-mark.png"
+            alt="LivraisonExpress"
+            width={40}
+            height={24}
+            className="h-9 w-auto"
+            priority
+          />
           <span className="text-lg font-bold tracking-tight">
             Livraison<span className="text-accent">Express</span>
           </span>

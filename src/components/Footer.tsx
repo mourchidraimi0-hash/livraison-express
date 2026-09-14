@@ -1,12 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="mt-auto border-t border-slate-200 bg-brand text-slate-200">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div>
-          <div className="text-lg font-bold text-white">
-            Livraison<span className="text-accent">Express</span>
+          <div className="flex items-center gap-2">
+            <Image
+              src="/logo-mark.png"
+              alt="LivraisonExpress"
+              width={40}
+              height={24}
+              className="h-8 w-auto"
+            />
+            <div className="text-lg font-bold text-white">
+              Livraison<span className="text-accent">Express</span>
+            </div>
           </div>
           <p className="mt-3 text-sm text-slate-300">
             Votre partenaire de confiance pour la livraison rapide et le
