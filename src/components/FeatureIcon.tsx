@@ -31,9 +31,17 @@ const ICONS = {
 
 export type FeatureIconName = keyof typeof ICONS;
 
-export default function FeatureIcon({ name }: { name: FeatureIconName }) {
+export default function FeatureIcon({
+  name,
+  className = "bg-accent/10",
+}: {
+  name: FeatureIconName;
+  className?: string;
+}) {
   return (
-    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
+    <div
+      className={`flex h-12 w-12 items-center justify-center rounded-xl text-accent ${className}`}
+    >
       <svg
         viewBox="0 0 24 24"
         fill="none"

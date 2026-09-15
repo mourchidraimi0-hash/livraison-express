@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import TrackingForm from "@/components/TrackingForm";
 import FeatureIcon, { type FeatureIconName } from "@/components/FeatureIcon";
 
@@ -6,30 +7,35 @@ const FEATURES: {
   title: string;
   description: string;
   icon: FeatureIconName;
+  image: string;
 }[] = [
   {
     title: "Suivi en temps réel",
     description:
       "Suivez chaque étape de votre colis, de la prise en charge à la livraison, grâce à un numéro de suivi unique.",
     icon: "truck",
+    image: "/features/suivi-temps-reel.jpg",
   },
   {
     title: "Livraison rapide",
     description:
       "Un réseau optimisé pour livrer vos colis en toute sécurité, dans les meilleurs délais, partout où vous êtes.",
     icon: "bolt",
+    image: "/features/livraison-rapide.jpg",
   },
   {
     title: "Espace client",
     description:
       "Créez un compte pour retrouver l'historique de tous vos envois et de vos demandes de devis à tout moment.",
     icon: "user",
+    image: "/features/espace-client.jpg",
   },
   {
     title: "Devis rapide",
     description:
       "Décrivez votre envoi et recevez une prise en charge rapide de notre équipe pour organiser l'enlèvement.",
     icon: "clipboard",
+    image: "/features/devis-rapide.jpg",
   },
 ];
 
@@ -114,15 +120,29 @@ export default function Home() {
           {FEATURES.map((feature) => (
             <div
               key={feature.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
-              <FeatureIcon name={feature.icon} />
-              <h3 className="mt-4 font-semibold text-brand">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-sm text-slate-500">
-                {feature.description}
-              </p>
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  fill
+                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <div className="absolute -bottom-5 left-5">
+                  <FeatureIcon
+                    name={feature.icon}
+                    className="bg-white shadow-md ring-1 ring-slate-100"
+                  />
+                </div>
+              </div>
+              <div className="p-6 pt-8">
+                <h3 className="font-semibold text-brand">{feature.title}</h3>
+                <p className="mt-2 text-sm text-slate-500">
+                  {feature.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
