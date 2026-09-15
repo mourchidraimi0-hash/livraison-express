@@ -175,25 +175,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="flex flex-col items-center justify-between gap-6 rounded-2xl bg-brand px-8 py-10 text-center sm:flex-row sm:text-left">
-          <div>
-            <h2 className="text-xl font-bold text-white sm:text-2xl">
-              Prêt à expédier votre prochain colis ?
-            </h2>
-            <p className="mt-2 text-slate-300">
-              Demandez un devis gratuit en quelques minutes.
-            </p>
-          </div>
-          <Link
-            href="/devis"
-            className="whitespace-nowrap rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark"
-          >
-            Demander un devis
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }
