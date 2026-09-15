@@ -3,9 +3,9 @@ import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 
 const NAV = [
-  { href: "/admin", label: "Tableau de bord", icon: "📊" },
-  { href: "/admin/colis", label: "Colis", icon: "📦" },
-  { href: "/admin/devis", label: "Demandes de devis", icon: "📋" },
+  { href: "/admin", label: "Dashboard", icon: "📊" },
+  { href: "/admin/colis", label: "Packages", icon: "📦" },
+  { href: "/admin/devis", label: "Quote Requests", icon: "📋" },
 ];
 
 export default async function AdminLayout({
@@ -22,10 +22,10 @@ export default async function AdminLayout({
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
       <div className="mb-8">
         <span className="inline-block rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-brand">
-          Espace administrateur
+          Admin Area
         </span>
         <h1 className="mt-2 text-2xl font-bold text-brand">
-          Gestion des livraisons
+          Delivery Management
         </h1>
       </div>
 

@@ -12,12 +12,12 @@ export type ActionState = {
 };
 
 const quoteSchema = z.object({
-  name: z.string().min(2, "Nom requis"),
-  email: z.string().email("Adresse e-mail invalide"),
-  phone: z.string().min(6, "Numéro de téléphone invalide"),
-  pickupAddress: z.string().min(5, "Adresse d'enlèvement requise"),
-  deliveryAddress: z.string().min(5, "Adresse de livraison requise"),
-  packageDetails: z.string().min(5, "Merci de décrire votre colis"),
+  name: z.string().min(2, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(6, "Invalid phone number"),
+  pickupAddress: z.string().min(5, "Pickup address is required"),
+  deliveryAddress: z.string().min(5, "Delivery address is required"),
+  packageDetails: z.string().min(5, "Please describe your package"),
 });
 
 export async function createQuoteAction(
@@ -62,7 +62,7 @@ export async function updateQuoteStatusAction(
 ): Promise<ActionState> {
   const session = await getSession();
   if (!session || session.role !== "ADMIN") {
-    return { error: "Accès refusé." };
+    return { error: "Access denied." };
   }
 
   const parsed = updateQuoteSchema.safeParse({
@@ -72,7 +72,7 @@ export async function updateQuoteStatusAction(
   });
 
   if (!parsed.success) {
-    return { error: "Données invalides." };
+    return { error: "Invalid data." };
   }
 
   await prisma.quoteRequest.update({

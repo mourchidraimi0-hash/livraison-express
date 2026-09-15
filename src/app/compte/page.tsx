@@ -6,7 +6,7 @@ import StatusBadge from "@/components/StatusBadge";
 import { STATUT_DEVIS_COLORS, STATUT_DEVIS_LABELS } from "@/lib/status";
 
 export const metadata = {
-  title: "Mon espace client — LivraisonExpress",
+  title: "My Account — LivraisonExpress",
 };
 
 export default async function ComptePage() {
@@ -29,10 +29,10 @@ export default async function ComptePage() {
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-brand">
-            Bonjour, {session.name.split(" ")[0]}
+            Hi, {session.name.split(" ")[0]}
           </h1>
           <p className="mt-1 text-slate-500">
-            Retrouvez ici vos colis et vos demandes de devis.
+            Find your packages and quote requests here.
           </p>
         </div>
         {session.role === "ADMIN" && (
@@ -40,26 +40,25 @@ export default async function ComptePage() {
             href="/admin"
             className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-light"
           >
-            Accéder à l&apos;administration
+            Go to Admin
           </Link>
         )}
       </div>
 
       <section className="mt-10">
-        <h2 className="text-lg font-semibold text-brand">Mes colis</h2>
+        <h2 className="text-lg font-semibold text-brand">My Packages</h2>
         {parcels.length === 0 ? (
           <p className="mt-3 rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-500">
-            Vous n&apos;avez aucun colis associé à votre compte pour le
-            moment.
+            You don&apos;t have any packages linked to your account yet.
           </p>
         ) : (
           <div className="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <table className="w-full text-left text-sm">
               <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-400">
                 <tr>
-                  <th className="px-4 py-3">N° de suivi</th>
-                  <th className="px-4 py-3">Destinataire</th>
-                  <th className="px-4 py-3">Statut</th>
+                  <th className="px-4 py-3">Tracking #</th>
+                  <th className="px-4 py-3">Recipient</th>
+                  <th className="px-4 py-3">Status</th>
                   <th className="px-4 py-3" />
                 </tr>
               </thead>
@@ -80,7 +79,7 @@ export default async function ComptePage() {
                         href={`/suivi?code=${parcel.trackingNumber}`}
                         className="font-semibold text-brand hover:underline"
                       >
-                        Suivre →
+                        Track →
                       </Link>
                     </td>
                   </tr>
@@ -93,11 +92,11 @@ export default async function ComptePage() {
 
       <section className="mt-10">
         <h2 className="text-lg font-semibold text-brand">
-          Mes demandes de devis
+          My Quote Requests
         </h2>
         {quotes.length === 0 ? (
           <p className="mt-3 rounded-xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-500">
-            Vous n&apos;avez soumis aucune demande de devis pour le moment.
+            You haven&apos;t submitted any quote requests yet.
           </p>
         ) : (
           <div className="mt-3 space-y-3">
@@ -117,8 +116,8 @@ export default async function ComptePage() {
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-slate-400">
-                  Envoyée le{" "}
-                  {new Intl.DateTimeFormat("fr-FR", {
+                  Sent on{" "}
+                  {new Intl.DateTimeFormat("en-US", {
                     dateStyle: "long",
                   }).format(quote.createdAt)}
                 </p>

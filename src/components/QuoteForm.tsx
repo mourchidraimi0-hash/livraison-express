@@ -16,11 +16,11 @@ export default function QuoteForm() {
       <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center">
         <p className="text-2xl">✅</p>
         <h3 className="mt-2 text-lg font-semibold text-emerald-700">
-          Demande envoyée !
+          Request sent!
         </h3>
         <p className="mt-2 text-sm text-emerald-700">
-          Merci, notre équipe va étudier votre demande et vous recontactera
-          rapidement pour organiser l&apos;enlèvement de votre colis.
+          Thank you, our team will review your request and get back to you
+          shortly to arrange the pickup of your package.
         </p>
       </div>
     );
@@ -35,21 +35,21 @@ export default function QuoteForm() {
       )}
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Nom complet" name="name" required />
-        <Field label="Adresse e-mail" name="email" type="email" required />
+        <Field label="Full Name" name="name" required />
+        <Field label="Email Address" name="email" type="email" required />
       </div>
 
-      <Field label="Téléphone" name="phone" type="tel" required />
+      <Field label="Phone" name="phone" type="tel" required />
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
-          label="Adresse d'enlèvement"
+          label="Pickup Address"
           name="pickupAddress"
           required
           textarea
         />
         <Field
-          label="Adresse de livraison"
+          label="Delivery Address"
           name="deliveryAddress"
           required
           textarea
@@ -57,7 +57,7 @@ export default function QuoteForm() {
       </div>
 
       <Field
-        label="Détails du colis (dimensions, poids, contenu...)"
+        label="Package Details (dimensions, weight, contents...)"
         name="packageDetails"
         required
         textarea
@@ -68,7 +68,7 @@ export default function QuoteForm() {
         disabled={pending}
         className="w-full rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark disabled:opacity-60"
       >
-        {pending ? "Envoi en cours..." : "Envoyer ma demande de devis"}
+        {pending ? "Sending..." : "Send My Quote Request"}
       </button>
     </form>
   );

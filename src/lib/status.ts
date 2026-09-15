@@ -1,13 +1,13 @@
 import type { StatutColis, StatutDevis } from "@prisma/client";
 
 export const STATUT_COLIS_LABELS: Record<StatutColis, string> = {
-  EN_ATTENTE: "En attente de prise en charge",
-  PRIS_EN_CHARGE: "Colis pris en charge",
-  EN_TRANSIT: "En transit",
-  EN_LIVRAISON: "En cours de livraison",
-  LIVRE: "Livré",
-  ECHEC_LIVRAISON: "Échec de livraison",
-  ANNULE: "Annulé",
+  EN_ATTENTE: "Awaiting Pickup",
+  PRIS_EN_CHARGE: "Package Picked Up",
+  EN_TRANSIT: "In Transit",
+  EN_LIVRAISON: "Out for Delivery",
+  LIVRE: "Delivered",
+  ECHEC_LIVRAISON: "Delivery Failed",
+  ANNULE: "Cancelled",
 };
 
 export const STATUT_COLIS_ORDER: StatutColis[] = [
@@ -29,10 +29,10 @@ export const STATUT_COLIS_COLORS: Record<StatutColis, string> = {
 };
 
 export const STATUT_DEVIS_LABELS: Record<StatutDevis, string> = {
-  NOUVEAU: "Nouveau",
-  EN_COURS: "En cours de traitement",
-  TRAITE: "Traité",
-  REFUSE: "Refusé",
+  NOUVEAU: "New",
+  EN_COURS: "In Progress",
+  TRAITE: "Processed",
+  REFUSE: "Declined",
 };
 
 export const STATUT_DEVIS_COLORS: Record<StatutDevis, string> = {

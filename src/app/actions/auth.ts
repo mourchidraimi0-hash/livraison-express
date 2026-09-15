@@ -11,10 +11,10 @@ export type ActionState = {
 };
 
 const registerSchema = z.object({
-  name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
-  email: z.string().email("Adresse e-mail invalide"),
-  phone: z.string().min(6, "Numéro de téléphone invalide"),
-  password: z.string().min(6, "Le mot de passe doit contenir au moins 6 caractères"),
+  name: z.string().min(2, "Name must be at least 2 characters long"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(6, "Invalid phone number"),
+  password: z.string().min(6, "Password must be at least 6 characters long"),
 });
 
 export async function registerAction(
@@ -36,7 +36,7 @@ export async function registerAction(
 
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
-    return { error: "Un compte existe déjà avec cette adresse e-mail." };
+    return { error: "An account already exists with this email address." };
   }
 
   const passwordHash = await bcrypt.hash(password, 10);
@@ -49,8 +49,8 @@ export async function registerAction(
 }
 
 const loginSchema = z.object({
-  email: z.string().email("Adresse e-mail invalide"),
-  password: z.string().min(1, "Mot de passe requis"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(1, "Password required"),
 });
 
 export async function loginAction(
@@ -69,12 +69,12 @@ export async function loginAction(
   const { email, password } = parsed.data;
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
-    return { error: "Adresse e-mail ou mot de passe incorrect." };
+    return { error: "Incorrect email or password." };
   }
 
   const valid = await bcrypt.compare(password, user.passwordHash);
   if (!valid) {
-    return { error: "Adresse e-mail ou mot de passe incorrect." };
+    return { error: "Incorrect email or password." };
   }
 
   await createSession({ userId: user.id, role: user.role, name: user.name });

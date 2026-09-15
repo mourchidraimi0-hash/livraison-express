@@ -5,7 +5,7 @@ import Timeline from "@/components/Timeline";
 import AddEventForm from "@/components/AddEventForm";
 
 export const metadata = {
-  title: "Détail du colis — LivraisonExpress",
+  title: "Package Details — LivraisonExpress",
 };
 
 export default async function AdminColisDetailPage({
@@ -27,7 +27,7 @@ export default async function AdminColisDetailPage({
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
           <div>
             <p className="text-xs uppercase tracking-wide text-slate-400">
-              Numéro de suivi
+              Tracking Number
             </p>
             <p className="font-mono text-lg font-semibold text-brand">
               {parcel.trackingNumber}
@@ -39,14 +39,14 @@ export default async function AdminColisDetailPage({
         <div className="mt-5 grid gap-4 text-sm sm:grid-cols-2">
           <div>
             <p className="text-xs uppercase tracking-wide text-slate-400">
-              Expéditeur
+              Sender
             </p>
             <p className="font-medium text-slate-700">{parcel.senderName}</p>
             <p className="text-slate-500">{parcel.senderAddress}</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-wide text-slate-400">
-              Destinataire
+              Recipient
             </p>
             <p className="font-medium text-slate-700">
               {parcel.recipientName}
@@ -59,7 +59,7 @@ export default async function AdminColisDetailPage({
           {parcel.client && (
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-400">
-                Compte client lié
+                Linked Customer Account
               </p>
               <p className="font-medium text-slate-700">
                 {parcel.client.name} ({parcel.client.email})
@@ -69,7 +69,7 @@ export default async function AdminColisDetailPage({
           {parcel.notifyEmail && (
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-400">
-                Notifications par e-mail
+                Email Notifications
               </p>
               <p className="font-medium text-slate-700">
                 ✉️ {parcel.notifyEmail}
@@ -90,14 +90,14 @@ export default async function AdminColisDetailPage({
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="rounded-2xl border border-slate-200 bg-white p-6">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400">
-            Mettre à jour la livraison
+            Update Delivery
           </h2>
           <AddEventForm parcelId={parcel.id} currentStatus={parcel.status} />
         </div>
 
         <div className="rounded-2xl border border-slate-200 bg-white p-6">
           <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400">
-            Historique
+            History
           </h2>
           <Timeline events={parcel.events} />
         </div>

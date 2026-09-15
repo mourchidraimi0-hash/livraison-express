@@ -20,7 +20,7 @@ export default function CreateParcelForm() {
         className="flex w-full items-center justify-between text-left"
       >
         <span className="font-semibold text-brand">
-          Créer un nouveau colis
+          Create a New Package
         </span>
         <span className="text-slate-400">{open ? "−" : "+"}</span>
       </button>
@@ -34,7 +34,7 @@ export default function CreateParcelForm() {
           )}
           {state.success && state.trackingNumber && (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-              Colis créé avec succès. Numéro de suivi :{" "}
+              Package created successfully. Tracking number:{" "}
               <span className="font-mono font-semibold">
                 {state.trackingNumber}
               </span>
@@ -42,37 +42,37 @@ export default function CreateParcelForm() {
           )}
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Nom de l'expéditeur" name="senderName" required />
+            <Field label="Sender Name" name="senderName" required />
             <Field
-              label="E-mail de notification (le client reçoit un e-mail à chaque mise à jour)"
+              label="Notification Email (the customer gets an email on every update)"
               name="clientEmail"
               type="email"
             />
           </div>
-          <Field label="Adresse de l'expéditeur" name="senderAddress" required />
+          <Field label="Sender Address" name="senderAddress" required />
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Nom du destinataire" name="recipientName" required />
-            <Field label="Téléphone du destinataire" name="recipientPhone" type="tel" />
+            <Field label="Recipient Name" name="recipientName" required />
+            <Field label="Recipient Phone" name="recipientPhone" type="tel" />
           </div>
-          <Field label="Adresse du destinataire" name="recipientAddress" required />
+          <Field label="Recipient Address" name="recipientAddress" required />
 
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Poids (kg)" name="weightKg" type="number" />
+            <Field label="Weight (kg)" name="weightKg" type="number" />
             <Field
-              label="Livraison estimée"
+              label="Estimated Delivery"
               name="estimatedDelivery"
               type="date"
             />
           </div>
-          <Field label="Description du colis" name="description" textarea />
+          <Field label="Package Description" name="description" textarea />
 
           <button
             type="submit"
             disabled={pending}
             className="w-full rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-light disabled:opacity-60 sm:w-auto"
           >
-            {pending ? "Création..." : "Créer le colis"}
+            {pending ? "Creating..." : "Create Package"}
           </button>
         </form>
       )}

@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import StatusBadge from "@/components/StatusBadge";
 
 export const metadata = {
-  title: "Tableau de bord admin — LivraisonExpress",
+  title: "Admin Dashboard — LivraisonExpress",
 };
 
 export default async function AdminDashboardPage() {
@@ -19,10 +19,10 @@ export default async function AdminDashboardPage() {
     ]);
 
   const stats = [
-    { label: "Colis au total", value: total, icon: "📦" },
-    { label: "En cours de livraison", value: enCours, icon: "🚚" },
-    { label: "Colis livrés", value: livres, icon: "✅" },
-    { label: "Devis à traiter", value: devisNouveaux, icon: "🆕" },
+    { label: "Total Packages", value: total, icon: "📦" },
+    { label: "Out for Delivery", value: enCours, icon: "🚚" },
+    { label: "Delivered Packages", value: livres, icon: "✅" },
+    { label: "Quotes to Process", value: devisNouveaux, icon: "🆕" },
   ];
 
   return (
@@ -44,19 +44,19 @@ export default async function AdminDashboardPage() {
 
       <div className="rounded-2xl border border-slate-200 bg-white p-6">
         <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-brand">Colis récents</h2>
+          <h2 className="font-semibold text-brand">Recent Packages</h2>
           <Link
             href="/admin/colis"
             className="text-sm font-semibold text-brand hover:underline"
           >
-            Voir tout →
+            View All →
           </Link>
         </div>
         {dernierColis.length === 0 ? (
           <p className="mt-4 text-sm text-slate-500">
-            Aucun colis enregistré pour le moment.{" "}
+            No packages registered yet.{" "}
             <Link href="/admin/colis" className="font-semibold text-brand hover:underline">
-              Créer le premier colis
+              Create the first package
             </Link>
             .
           </p>

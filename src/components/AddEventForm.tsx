@@ -44,7 +44,7 @@ export default function AddEventForm({
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Nouveau statut
+          New Status
         </span>
         <select
           name="status"
@@ -61,24 +61,24 @@ export default function AddEventForm({
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Position / lieu actuel
+          Current Location
         </span>
         <input
           type="text"
           name="location"
-          placeholder="ex : Centre de tri Casablanca"
+          placeholder="e.g. Casablanca sorting center"
           className="w-full rounded-xl border border-slate-300 px-4 py-2.5 outline-none transition focus:border-brand"
         />
       </label>
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Note (visible par le client)
+          Note (visible to the customer)
         </span>
         <textarea
           name="note"
           rows={2}
-          placeholder="ex : Colis parti vers le centre de distribution"
+          placeholder="e.g. Package left for the distribution center"
           className="w-full rounded-xl border border-slate-300 px-4 py-2.5 outline-none transition focus:border-brand"
         />
       </label>
@@ -88,7 +88,7 @@ export default function AddEventForm({
         disabled={pending}
         className="w-full rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark disabled:opacity-60"
       >
-        {pending ? "Mise à jour..." : "Mettre à jour le suivi"}
+        {pending ? "Updating..." : "Update Tracking"}
       </button>
     </form>
   );

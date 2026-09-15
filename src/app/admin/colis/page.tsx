@@ -4,7 +4,7 @@ import StatusBadge from "@/components/StatusBadge";
 import CreateParcelForm from "@/components/CreateParcelForm";
 
 export const metadata = {
-  title: "Gestion des colis — LivraisonExpress",
+  title: "Package Management — LivraisonExpress",
 };
 
 export default async function AdminColisPage() {
@@ -20,21 +20,21 @@ export default async function AdminColisPage() {
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
         <div className="border-b border-slate-100 px-6 py-4">
           <h2 className="font-semibold text-brand">
-            Tous les colis ({parcels.length})
+            All Packages ({parcels.length})
           </h2>
         </div>
         {parcels.length === 0 ? (
           <p className="p-6 text-sm text-slate-500">
-            Aucun colis pour le moment.
+            No packages yet.
           </p>
         ) : (
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-400">
               <tr>
-                <th className="px-6 py-3">N° de suivi</th>
-                <th className="px-6 py-3">Expéditeur → Destinataire</th>
-                <th className="px-6 py-3">Client lié</th>
-                <th className="px-6 py-3">Statut</th>
+                <th className="px-6 py-3">Tracking #</th>
+                <th className="px-6 py-3">Sender → Recipient</th>
+                <th className="px-6 py-3">Linked Client</th>
+                <th className="px-6 py-3">Status</th>
                 <th className="px-6 py-3" />
               </tr>
             </thead>
@@ -58,7 +58,7 @@ export default async function AdminColisPage() {
                       href={`/admin/colis/${parcel.id}`}
                       className="font-semibold text-brand hover:underline"
                     >
-                      Gérer →
+                      Manage →
                     </Link>
                   </td>
                 </tr>

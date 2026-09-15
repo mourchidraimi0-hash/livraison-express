@@ -1,7 +1,7 @@
 import QuoteForm from "@/components/QuoteForm";
 
 export const metadata = {
-  title: "Demander un devis — LivraisonExpress",
+  title: "Request a Quote — LivraisonExpress",
 };
 
 export default function DevisPage() {
@@ -9,11 +9,11 @@ export default function DevisPage() {
     <div className="mx-auto max-w-2xl px-4 py-14 sm:px-6">
       <div className="text-center">
         <h1 className="text-3xl font-bold text-brand">
-          Demander un devis d&apos;enlèvement
+          Request a Pickup Quote
         </h1>
         <p className="mt-2 text-slate-500">
-          Renseignez les informations ci-dessous, notre équipe vous
-          recontacte rapidement pour organiser la livraison de votre colis.
+          Fill in the details below and our team will get back to you shortly
+          to arrange your package delivery.
         </p>
       </div>
 

@@ -20,19 +20,19 @@ export async function sendParcelStatusEmail({
   const statusLabel = STATUT_COLIS_LABELS[status];
   const trackingUrl = `${appUrl}/suivi?code=${parcel.trackingNumber}`;
 
-  const subject = `Votre colis ${parcel.trackingNumber} : ${statusLabel}`;
+  const subject = `Your package ${parcel.trackingNumber}: ${statusLabel}`;
 
   const text = [
-    `Bonjour,`,
+    `Hello,`,
     ``,
-    `Le statut de votre colis ${parcel.trackingNumber} a été mis à jour :`,
+    `The status of your package ${parcel.trackingNumber} has been updated:`,
     `${statusLabel}`,
-    location ? `Position actuelle : ${location}` : null,
-    note ? `Note : ${note}` : null,
+    location ? `Current location: ${location}` : null,
+    note ? `Note: ${note}` : null,
     ``,
-    `Suivez votre colis en temps réel : ${trackingUrl}`,
+    `Track your package in real time: ${trackingUrl}`,
     ``,
-    `— L'équipe LivraisonExpress`,
+    `— The LivraisonExpress team`,
   ]
     .filter(Boolean)
     .join("\n");
@@ -45,20 +45,20 @@ export async function sendParcelStatusEmail({
         </span>
       </div>
       <div style="border: 1px solid #e2e8f0; border-top: none; border-radius: 0 0 12px 12px; padding: 24px;">
-        <p>Bonjour${parcel.recipientName ? " " + parcel.recipientName : ""},</p>
-        <p>Le statut de votre colis <strong>${parcel.trackingNumber}</strong> vient d'être mis à jour :</p>
+        <p>Hello${parcel.recipientName ? " " + parcel.recipientName : ""},</p>
+        <p>The status of your package <strong>${parcel.trackingNumber}</strong> has just been updated:</p>
         <p style="display: inline-block; background: #fce7f3; color: #c40a66; font-weight: 600; padding: 8px 14px; border-radius: 999px; margin: 8px 0;">
           ${statusLabel}
         </p>
-        ${location ? `<p>📍 Position actuelle : <strong>${location}</strong></p>` : ""}
+        ${location ? `<p>📍 Current location: <strong>${location}</strong></p>` : ""}
         ${note ? `<p style="color: #475569;">${note}</p>` : ""}
         <p style="margin-top: 24px;">
           <a href="${trackingUrl}" style="background: #ec0f7b; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 10px; font-weight: 600;">
-            Suivre mon colis
+            Track My Package
           </a>
         </p>
         <p style="margin-top: 24px; color: #94a3b8; font-size: 12px;">
-          — L'équipe LivraisonExpress
+          — The LivraisonExpress team
         </p>
       </div>
     </div>

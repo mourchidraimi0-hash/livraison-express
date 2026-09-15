@@ -30,7 +30,7 @@ export default function RegisterForm({ redirectTo }: { redirectTo: string }) {
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Nom complet
+          Full Name
         </span>
         <input
           type="text"
@@ -42,7 +42,7 @@ export default function RegisterForm({ redirectTo }: { redirectTo: string }) {
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Adresse e-mail
+          Email Address
         </span>
         <input
           type="email"
@@ -54,7 +54,7 @@ export default function RegisterForm({ redirectTo }: { redirectTo: string }) {
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Téléphone
+          Phone
         </span>
         <input
           type="tel"
@@ -66,7 +66,7 @@ export default function RegisterForm({ redirectTo }: { redirectTo: string }) {
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Mot de passe
+          Password
         </span>
         <input
           type="password"
@@ -82,7 +82,7 @@ export default function RegisterForm({ redirectTo }: { redirectTo: string }) {
         disabled={pending}
         className="w-full rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-light disabled:opacity-60"
       >
-        {pending ? "Création..." : "Créer mon compte"}
+        {pending ? "Creating..." : "Create My Account"}
       </button>
     </form>
   );

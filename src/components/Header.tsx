@@ -25,17 +25,17 @@ export default async function Header() {
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
           <Link href="/" className="hover:text-brand">
-            Accueil
+            Home
           </Link>
           <Link href="/suivi" className="hover:text-brand">
-            Suivre un colis
+            Track a Package
           </Link>
           <Link href="/devis" className="hover:text-brand">
-            Demander un devis
+            Request a Quote
           </Link>
           {session?.role === "ADMIN" && (
             <Link href="/admin" className="hover:text-brand">
-              Administration
+              Admin
             </Link>
           )}
         </nav>
@@ -47,14 +47,14 @@ export default async function Header() {
                 href="/compte"
                 className="hidden text-sm font-medium text-slate-600 hover:text-brand sm:inline"
               >
-                Bonjour, {session.name.split(" ")[0]}
+                Hi, {session.name.split(" ")[0]}
               </Link>
               <form action={logoutAction}>
                 <button
                   type="submit"
                   className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-brand hover:text-brand"
                 >
-                  Déconnexion
+                  Log out
                 </button>
               </form>
             </>
@@ -64,13 +64,13 @@ export default async function Header() {
                 href="/connexion"
                 className="hidden text-sm font-semibold text-slate-700 hover:text-brand sm:inline"
               >
-                Connexion
+                Log in
               </Link>
               <Link
                 href="/devis"
                 className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark"
               >
-                Expédier un colis
+                Ship a Package
               </Link>
             </>
           )}

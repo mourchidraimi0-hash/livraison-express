@@ -19,7 +19,7 @@ export default function TrackingForm({
         type="text"
         name="code"
         defaultValue={defaultValue}
-        placeholder="Entrez votre numéro de suivi (ex: LE1A2B3C4D5)"
+        placeholder="Enter your tracking number (e.g. LE1A2B3C4D5)"
         required
         className={`w-full flex-1 rounded-xl border px-4 py-3 text-sm font-medium outline-none transition ${
           isDark
@@ -31,7 +31,7 @@ export default function TrackingForm({
         type="submit"
         className="whitespace-nowrap rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark"
       >
-        Suivre mon colis
+        Track My Package
       </button>
     </form>
   );

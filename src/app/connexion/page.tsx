@@ -2,7 +2,7 @@ import Link from "next/link";
 import LoginForm from "@/components/LoginForm";
 
 export const metadata = {
-  title: "Connexion — LivraisonExpress",
+  title: "Log In — LivraisonExpress",
 };
 
 export default async function ConnexionPage({
@@ -15,9 +15,9 @@ export default async function ConnexionPage({
   return (
     <div className="mx-auto max-w-md px-4 py-14 sm:px-6">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-brand">Connexion</h1>
+        <h1 className="text-3xl font-bold text-brand">Log In</h1>
         <p className="mt-2 text-slate-500">
-          Accédez à votre espace client pour suivre vos envois.
+          Access your customer portal to track your shipments.
         </p>
       </div>
 
@@ -26,12 +26,12 @@ export default async function ConnexionPage({
       </div>
 
       <p className="mt-6 text-center text-sm text-slate-500">
-        Pas encore de compte ?{" "}
+        Don&apos;t have an account yet?{" "}
         <Link
           href="/inscription"
           className="font-semibold text-brand hover:underline"
         >
-          Créer un compte
+          Create an Account
         </Link>
       </p>
     </div>

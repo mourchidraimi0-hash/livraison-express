@@ -2,7 +2,7 @@ import Link from "next/link";
 import RegisterForm from "@/components/RegisterForm";
 
 export const metadata = {
-  title: "Créer un compte — LivraisonExpress",
+  title: "Create an Account — LivraisonExpress",
 };
 
 export default async function InscriptionPage({
@@ -15,10 +15,9 @@ export default async function InscriptionPage({
   return (
     <div className="mx-auto max-w-md px-4 py-14 sm:px-6">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-brand">Créer un compte</h1>
+        <h1 className="text-3xl font-bold text-brand">Create an Account</h1>
         <p className="mt-2 text-slate-500">
-          Suivez tous vos colis et vos demandes de devis depuis un espace
-          unique.
+          Track all your packages and quote requests from a single place.
         </p>
       </div>
 
@@ -27,12 +26,12 @@ export default async function InscriptionPage({
       </div>
 
       <p className="mt-6 text-center text-sm text-slate-500">
-        Déjà un compte ?{" "}
+        Already have an account?{" "}
         <Link
           href="/connexion"
           className="font-semibold text-brand hover:underline"
         >
-          Se connecter
+          Log In
         </Link>
       </p>
     </div>

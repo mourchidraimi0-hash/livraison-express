@@ -32,7 +32,7 @@ export default function UpdateQuoteForm({
 
       <label className="text-sm">
         <span className="mb-1 block text-xs font-medium text-slate-500">
-          Statut
+          Status
         </span>
         <select
           name="status"
@@ -49,7 +49,7 @@ export default function UpdateQuoteForm({
 
       <label className="flex-1 text-sm">
         <span className="mb-1 block text-xs font-medium text-slate-500">
-          Note interne
+          Internal Note
         </span>
         <input
           type="text"
@@ -64,7 +64,7 @@ export default function UpdateQuoteForm({
         disabled={pending}
         className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-light disabled:opacity-60"
       >
-        {pending ? "..." : "Enregistrer"}
+        {pending ? "..." : "Save"}
       </button>
 
       {state.error && (

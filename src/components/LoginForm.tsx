@@ -30,7 +30,7 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Adresse e-mail
+          Email Address
         </span>
         <input
           type="email"
@@ -42,7 +42,7 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
-          Mot de passe
+          Password
         </span>
         <input
           type="password"
@@ -57,7 +57,7 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
         disabled={pending}
         className="w-full rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-light disabled:opacity-60"
       >
-        {pending ? "Connexion..." : "Se connecter"}
+        {pending ? "Logging in..." : "Log In"}
       </button>
     </form>
   );

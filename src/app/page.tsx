@@ -10,30 +10,30 @@ const FEATURES: {
   image: string;
 }[] = [
   {
-    title: "Suivi en temps réel",
+    title: "Real-Time Tracking",
     description:
-      "Suivez chaque étape de votre colis, de la prise en charge à la livraison, grâce à un numéro de suivi unique.",
+      "Follow every step of your package, from pickup to delivery, with a unique tracking number.",
     icon: "truck",
     image: "/features/suivi-temps-reel.jpg",
   },
   {
-    title: "Livraison rapide",
+    title: "Fast Delivery",
     description:
-      "Un réseau optimisé pour livrer vos colis en toute sécurité, dans les meilleurs délais, partout où vous êtes.",
+      "An optimized network to deliver your packages safely, on the shortest timelines, wherever you are.",
     icon: "bolt",
     image: "/features/livraison-rapide.jpg",
   },
   {
-    title: "Espace client",
+    title: "Customer Portal",
     description:
-      "Créez un compte pour retrouver l'historique de tous vos envois et de vos demandes de devis à tout moment.",
+      "Create an account to find the history of all your shipments and quote requests at any time.",
     icon: "user",
     image: "/features/espace-client.jpg",
   },
   {
-    title: "Devis rapide",
+    title: "Quick Quotes",
     description:
-      "Décrivez votre envoi et recevez une prise en charge rapide de notre équipe pour organiser l'enlèvement.",
+      "Describe your shipment and get a fast response from our team to arrange pickup.",
     icon: "clipboard",
     image: "/features/devis-rapide.jpg",
   },
@@ -42,18 +42,18 @@ const FEATURES: {
 const STEPS = [
   {
     step: "1",
-    title: "Demandez un devis",
-    description: "Renseignez les adresses d'enlèvement et de livraison ainsi que les détails de votre colis.",
+    title: "Request a Quote",
+    description: "Provide the pickup and delivery addresses along with your package details.",
   },
   {
     step: "2",
-    title: "Nous prenons en charge",
-    description: "Notre équipe valide la demande et votre colis reçoit un numéro de suivi unique.",
+    title: "We Take Charge",
+    description: "Our team validates the request and your package gets a unique tracking number.",
   },
   {
     step: "3",
-    title: "Suivez la livraison",
-    description: "Suivez chaque étape en temps réel jusqu'à la remise en main propre au destinataire.",
+    title: "Track the Delivery",
+    description: "Follow every step in real time until it's handed off to the recipient.",
   },
 ];
 
@@ -72,16 +72,15 @@ export default function Home() {
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">
           <div className="max-w-2xl">
             <span className="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-accent">
-              Livraison &amp; suivi de colis
+              Delivery &amp; Package Tracking
             </span>
             <h1 className="mt-5 text-4xl font-extrabold leading-tight text-white sm:text-5xl">
-              Vos colis livrés vite,
-              <br /> suivis en temps réel.
+              Your packages delivered fast,
+              <br /> tracked in real time.
             </h1>
             <p className="mt-5 text-lg text-slate-300">
-              LivraisonExpress connecte expéditeurs et destinataires avec un
-              suivi transparent, de l&apos;enlèvement jusqu&apos;à la porte
-              du destinataire.
+              LivraisonExpress connects senders and recipients with
+              transparent tracking, from pickup to the recipient&apos;s door.
             </p>
 
             <div className="mt-8 rounded-2xl bg-white/5 p-4 backdrop-blur">
@@ -93,13 +92,13 @@ export default function Home() {
                 href="/devis"
                 className="rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark"
               >
-                Demander un devis
+                Request a Quote
               </Link>
               <Link
                 href="/inscription"
                 className="rounded-xl border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
               >
-                Créer un compte client
+                Create a Customer Account
               </Link>
             </div>
           </div>
@@ -109,11 +108,10 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <div className="mb-10 text-center">
           <h2 className="text-2xl font-bold text-brand sm:text-3xl">
-            Pourquoi choisir LivraisonExpress ?
+            Why Choose LivraisonExpress?
           </h2>
           <p className="mt-2 text-slate-500">
-            Une plateforme pensée pour la fiabilité, la rapidité et la
-            transparence.
+            A platform built for reliability, speed, and transparency.
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -152,10 +150,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="mb-10 text-center">
             <h2 className="text-2xl font-bold text-brand sm:text-3xl">
-              Comment ça marche
+              How It Works
             </h2>
             <p className="mt-2 text-slate-500">
-              Trois étapes simples entre votre demande et la livraison.
+              Three simple steps between your request and delivery.
             </p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">

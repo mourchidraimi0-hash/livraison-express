@@ -14,16 +14,16 @@ async function main() {
   if (!existingAdmin) {
     await prisma.user.create({
       data: {
-        name: "Administrateur",
+        name: "Admin",
         email: adminEmail,
         phone: "+212500000000",
         passwordHash: await bcrypt.hash(adminPassword, 10),
         role: "ADMIN",
       },
     });
-    console.log(`Compte admin créé : ${adminEmail} / ${adminPassword}`);
+    console.log(`Admin account created: ${adminEmail} / ${adminPassword}`);
   } else {
-    console.log("Compte admin déjà existant, aucune action.");
+    console.log("Admin account already exists, no action taken.");
   }
 }
 

@@ -5,7 +5,7 @@ import StatusBadge from "@/components/StatusBadge";
 import Timeline from "@/components/Timeline";
 
 export const metadata = {
-  title: "Suivre un colis — LivraisonExpress",
+  title: "Track a Package — LivraisonExpress",
 };
 
 export default async function SuiviPage({
@@ -26,10 +26,10 @@ export default async function SuiviPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-brand">Suivre un colis</h1>
+        <h1 className="text-3xl font-bold text-brand">Track a Package</h1>
         <p className="mt-2 text-slate-500">
-          Entrez votre numéro de suivi pour connaître l&apos;état de votre
-          livraison en temps réel.
+          Enter your tracking number to see the status of your delivery in
+          real time.
         </p>
       </div>
 
@@ -39,9 +39,9 @@ export default async function SuiviPage({
 
       {trackingNumber && !parcel && (
         <div className="mt-8 rounded-2xl border border-red-200 bg-red-50 p-6 text-center text-red-700">
-          Aucun colis trouvé pour le numéro{" "}
-          <span className="font-semibold">{trackingNumber}</span>. Vérifiez
-          votre numéro de suivi et réessayez.
+          No package found for tracking number{" "}
+          <span className="font-semibold">{trackingNumber}</span>. Please
+          check your tracking number and try again.
         </div>
       )}
 
@@ -50,7 +50,7 @@ export default async function SuiviPage({
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-400">
-                Numéro de suivi
+                Tracking Number
               </p>
               <p className="font-mono text-lg font-semibold text-brand">
                 {parcel.trackingNumber}
@@ -62,14 +62,14 @@ export default async function SuiviPage({
           <div className="mt-5 grid gap-4 text-sm sm:grid-cols-2">
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-400">
-                Expéditeur
+                Sender
               </p>
               <p className="font-medium text-slate-700">{parcel.senderName}</p>
               <p className="text-slate-500">{parcel.senderAddress}</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-400">
-                Destinataire
+                Recipient
               </p>
               <p className="font-medium text-slate-700">
                 {parcel.recipientName}
@@ -80,14 +80,14 @@ export default async function SuiviPage({
 
           {parcel.currentLocation && (
             <p className="mt-4 text-sm text-slate-600">
-              📍 Position actuelle :{" "}
+              📍 Current location:{" "}
               <span className="font-medium">{parcel.currentLocation}</span>
             </p>
           )}
 
           <div className="mt-8">
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400">
-              Historique de livraison
+              Delivery History
             </h2>
             <Timeline events={parcel.events} />
           </div>
@@ -95,9 +95,9 @@ export default async function SuiviPage({
       )}
 
       <p className="mt-8 text-center text-sm text-slate-500">
-        Vous n&apos;avez pas encore de colis ?{" "}
+        Don&apos;t have a package yet?{" "}
         <Link href="/devis" className="font-semibold text-brand hover:underline">
-          Demandez un devis
+          Request a Quote
         </Link>
       </p>
     </div>

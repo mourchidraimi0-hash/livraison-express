@@ -17,16 +17,16 @@ export type ActionState = {
 async function requireAdmin() {
   const session = await getSession();
   if (!session || session.role !== "ADMIN") {
-    throw new Error("Accès refusé : réservé aux administrateurs.");
+    throw new Error("Access denied: administrators only.");
   }
   return session;
 }
 
 const createParcelSchema = z.object({
-  senderName: z.string().min(2, "Nom de l'expéditeur requis"),
-  senderAddress: z.string().min(5, "Adresse de l'expéditeur requise"),
-  recipientName: z.string().min(2, "Nom du destinataire requis"),
-  recipientAddress: z.string().min(5, "Adresse du destinataire requise"),
+  senderName: z.string().min(2, "Sender name is required"),
+  senderAddress: z.string().min(5, "Sender address is required"),
+  recipientName: z.string().min(2, "Recipient name is required"),
+  recipientAddress: z.string().min(5, "Recipient address is required"),
   recipientPhone: z.string().optional(),
   description: z.string().optional(),
   weightKg: z.string().optional(),
@@ -82,7 +82,7 @@ export async function createParcelAction(
       events: {
         create: {
           status: "EN_ATTENTE",
-          note: "Colis enregistré dans le système.",
+          note: "Package registered in the system.",
         },
       },
     },
@@ -93,7 +93,7 @@ export async function createParcelAction(
       to: parcel.notifyEmail,
       parcel,
       status: "EN_ATTENTE",
-      note: "Votre colis a été enregistré dans notre système.",
+      note: "Your package has been registered in our system.",
     });
   }
 
@@ -122,7 +122,7 @@ export async function addTrackingEventAction(
   });
 
   if (!parsed.success) {
-    return { error: "Données invalides." };
+    return { error: "Invalid data." };
   }
 
   const { parcelId, status, location, note } = parsed.data;

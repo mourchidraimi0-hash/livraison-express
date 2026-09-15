@@ -3,7 +3,7 @@ import { STATUT_DEVIS_COLORS, STATUT_DEVIS_LABELS } from "@/lib/status";
 import UpdateQuoteForm from "@/components/UpdateQuoteForm";
 
 export const metadata = {
-  title: "Demandes de devis — LivraisonExpress",
+  title: "Quote Requests — LivraisonExpress",
 };
 
 export default async function AdminDevisPage() {
@@ -14,12 +14,12 @@ export default async function AdminDevisPage() {
   return (
     <div className="space-y-4">
       <h2 className="font-semibold text-brand">
-        Demandes de devis ({quotes.length})
+        Quote Requests ({quotes.length})
       </h2>
 
       {quotes.length === 0 ? (
         <p className="rounded-2xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-500">
-          Aucune demande de devis pour le moment.
+          No quote requests yet.
         </p>
       ) : (
         <div className="space-y-4">
@@ -43,8 +43,8 @@ export default async function AdminDevisPage() {
                     {quote.packageDetails}
                   </p>
                   <p className="mt-1 text-xs text-slate-400">
-                    Envoyée le{" "}
-                    {new Intl.DateTimeFormat("fr-FR", {
+                    Sent on{" "}
+                    {new Intl.DateTimeFormat("en-US", {
                       dateStyle: "long",
                       timeStyle: "short",
                     }).format(quote.createdAt)}
