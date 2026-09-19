@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma migrate deploy && next build",
+    "build": "prisma generate && (prisma migrate deploy || (prisma migrate resolve --applied 20260909212922_init_postgres && prisma migrate deploy)) && next build",
     "start": "next start",
     "lint": "eslint"
   },
