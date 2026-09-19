@@ -1,3 +1,5 @@
+import MotionButton from "@/components/motion/MotionButton";
+
 export default function TrackingForm({
   defaultValue,
   variant = "light",
@@ -27,12 +29,12 @@ export default function TrackingForm({
             : "border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:border-brand"
         }`}
       />
-      <button
+      <MotionButton
         type="submit"
-        className="whitespace-nowrap rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark"
+        className="whitespace-nowrap rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-dark"
       >
         Track My Package
-      </button>
+      </MotionButton>
     </form>
   );
 }

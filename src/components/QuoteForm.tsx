@@ -1,7 +1,9 @@
 "use client";
 
 import { useActionState } from "react";
+import { motion } from "framer-motion";
 import { createQuoteAction, type ActionState } from "@/app/actions/quotes";
+import MotionButton from "@/components/motion/MotionButton";
 
 const initialState: ActionState = {};
 
@@ -13,8 +15,20 @@ export default function QuoteForm() {
 
   if (state.success) {
     return (
-      <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center">
-        <p className="text-2xl">✅</p>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center"
+      >
+        <motion.p
+          className="text-2xl"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 12, delay: 0.15 }}
+        >
+          ✅
+        </motion.p>
         <h3 className="mt-2 text-lg font-semibold text-emerald-700">
           Request sent!
         </h3>
@@ -22,7 +36,7 @@ export default function QuoteForm() {
           Thank you, our team will review your request and get back to you
           shortly to arrange the pickup of your package.
         </p>
-      </div>
+      </motion.div>
     );
   }
 
@@ -63,13 +77,13 @@ export default function QuoteForm() {
         textarea
       />
 
-      <button
+      <MotionButton
         type="submit"
         disabled={pending}
-        className="w-full rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark disabled:opacity-60"
+        className="w-full rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-dark disabled:opacity-60"
       >
         {pending ? "Sending..." : "Send My Quote Request"}
-      </button>
+      </MotionButton>
     </form>
   );
 }

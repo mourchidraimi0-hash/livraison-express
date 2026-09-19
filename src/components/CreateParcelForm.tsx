@@ -1,7 +1,9 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { createParcelAction, type ActionState } from "@/app/actions/parcels";
+import MotionButton from "@/components/motion/MotionButton";
 
 const initialState: ActionState = {};
 
@@ -22,10 +24,24 @@ export default function CreateParcelForm() {
         <span className="font-semibold text-brand">
           Create a New Package
         </span>
-        <span className="text-slate-400">{open ? "−" : "+"}</span>
+        <motion.span
+          animate={{ rotate: open ? 45 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="text-lg text-slate-400"
+        >
+          +
+        </motion.span>
       </button>
 
-      {open && (
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="overflow-hidden"
+          >
         <form action={formAction} className="mt-5 space-y-5" key={state.trackingNumber ?? "form"}>
           {state.error && (
             <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
@@ -33,12 +49,16 @@ export default function CreateParcelForm() {
             </div>
           )}
           {state.success && state.trackingNumber && (
-            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+            >
               Package created successfully. Tracking number:{" "}
               <span className="font-mono font-semibold">
                 {state.trackingNumber}
               </span>
-            </div>
+            </motion.div>
           )}
 
           <div className="grid gap-5 sm:grid-cols-2">
@@ -67,15 +87,17 @@ export default function CreateParcelForm() {
           </div>
           <Field label="Package Description" name="description" textarea />
 
-          <button
+          <MotionButton
             type="submit"
             disabled={pending}
-            className="w-full rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-light disabled:opacity-60 sm:w-auto"
+            className="w-full rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-light disabled:opacity-60 sm:w-auto"
           >
             {pending ? "Creating..." : "Create Package"}
-          </button>
+          </MotionButton>
         </form>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

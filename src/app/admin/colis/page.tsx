@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import StatusBadge from "@/components/StatusBadge";
 import CreateParcelForm from "@/components/CreateParcelForm";
+import Reveal from "@/components/motion/Reveal";
 
 export const metadata = {
   title: "Package Management — LivraisonExpress",
@@ -15,8 +16,11 @@ export default async function AdminColisPage() {
 
   return (
     <div className="space-y-6">
-      <CreateParcelForm />
+      <Reveal onMount>
+        <CreateParcelForm />
+      </Reveal>
 
+      <Reveal onMount delay={0.1}>
       <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
         <div className="border-b border-slate-100 px-6 py-4">
           <h2 className="font-semibold text-brand">
@@ -40,7 +44,7 @@ export default async function AdminColisPage() {
             </thead>
             <tbody className="divide-y divide-slate-100">
               {parcels.map((parcel) => (
-                <tr key={parcel.id}>
+                <tr key={parcel.id} className="transition-colors hover:bg-slate-50">
                   <td className="px-6 py-3 font-mono font-medium text-brand">
                     {parcel.trackingNumber}
                   </td>
@@ -67,6 +71,7 @@ export default async function AdminColisPage() {
           </table>
         )}
       </div>
+      </Reveal>
     </div>
   );
 }

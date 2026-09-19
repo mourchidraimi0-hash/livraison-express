@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import TrackingForm from "@/components/TrackingForm";
 import StatusBadge from "@/components/StatusBadge";
 import Timeline from "@/components/Timeline";
+import Reveal from "@/components/motion/Reveal";
 
 export const metadata = {
   title: "Track a Package — LivraisonExpress",
@@ -25,27 +26,34 @@ export default async function SuiviPage({
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-brand">Track a Package</h1>
-        <p className="mt-2 text-slate-500">
-          Enter your tracking number to see the status of your delivery in
-          real time.
-        </p>
-      </div>
+      <Reveal onMount>
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-brand">Track a Package</h1>
+          <p className="mt-2 text-slate-500">
+            Enter your tracking number to see the status of your delivery in
+            real time.
+          </p>
+        </div>
+      </Reveal>
 
-      <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-        <TrackingForm defaultValue={trackingNumber} />
-      </div>
+      <Reveal onMount delay={0.1}>
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+          <TrackingForm defaultValue={trackingNumber} />
+        </div>
+      </Reveal>
 
       {trackingNumber && !parcel && (
-        <div className="mt-8 rounded-2xl border border-red-200 bg-red-50 p-6 text-center text-red-700">
-          No package found for tracking number{" "}
-          <span className="font-semibold">{trackingNumber}</span>. Please
-          check your tracking number and try again.
-        </div>
+        <Reveal onMount>
+          <div className="mt-8 rounded-2xl border border-red-200 bg-red-50 p-6 text-center text-red-700">
+            No package found for tracking number{" "}
+            <span className="font-semibold">{trackingNumber}</span>. Please
+            check your tracking number and try again.
+          </div>
+        </Reveal>
       )}
 
       {parcel && (
+        <Reveal onMount>
         <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
@@ -92,6 +100,7 @@ export default async function SuiviPage({
             <Timeline events={parcel.events} />
           </div>
         </div>
+        </Reveal>
       )}
 
       <p className="mt-8 text-center text-sm text-slate-500">

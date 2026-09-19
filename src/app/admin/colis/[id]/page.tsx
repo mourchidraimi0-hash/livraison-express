@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import StatusBadge from "@/components/StatusBadge";
 import Timeline from "@/components/Timeline";
 import AddEventForm from "@/components/AddEventForm";
+import Reveal from "@/components/motion/Reveal";
 
 export const metadata = {
   title: "Package Details — LivraisonExpress",
@@ -23,6 +24,7 @@ export default async function AdminColisDetailPage({
 
   return (
     <div className="space-y-6">
+      <Reveal onMount>
       <div className="rounded-2xl border border-slate-200 bg-white p-6">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
           <div>
@@ -86,21 +88,26 @@ export default async function AdminColisDetailPage({
           )}
         </div>
       </div>
+      </Reveal>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400">
-            Update Delivery
-          </h2>
-          <AddEventForm parcelId={parcel.id} currentStatus={parcel.status} />
-        </div>
+        <Reveal onMount delay={0.1} direction="left">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400">
+              Update Delivery
+            </h2>
+            <AddEventForm parcelId={parcel.id} currentStatus={parcel.status} />
+          </div>
+        </Reveal>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-6">
-          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400">
-            History
-          </h2>
-          <Timeline events={parcel.events} />
-        </div>
+        <Reveal onMount delay={0.2} direction="right">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6">
+            <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400">
+              History
+            </h2>
+            <Timeline events={parcel.events} />
+          </div>
+        </Reveal>
       </div>
     </div>
   );

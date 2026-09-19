@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LoginForm from "@/components/LoginForm";
+import Reveal from "@/components/motion/Reveal";
 
 export const metadata = {
   title: "Log In — LivraisonExpress",
@@ -14,16 +15,20 @@ export default async function ConnexionPage({
 
   return (
     <div className="mx-auto max-w-md px-4 py-14 sm:px-6">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-brand">Log In</h1>
-        <p className="mt-2 text-slate-500">
-          Access your customer portal to track your shipments.
-        </p>
-      </div>
+      <Reveal onMount>
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-brand">Log In</h1>
+          <p className="mt-2 text-slate-500">
+            Access your customer portal to track your shipments.
+          </p>
+        </div>
+      </Reveal>
 
-      <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <LoginForm redirectTo={redirect || "/compte"} />
-      </div>
+      <Reveal onMount delay={0.15}>
+        <div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          <LoginForm redirectTo={redirect || "/compte"} />
+        </div>
+      </Reveal>
 
       <p className="mt-6 text-center text-sm text-slate-500">
         Don&apos;t have an account yet?{" "}

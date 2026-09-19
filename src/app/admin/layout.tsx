@@ -35,9 +35,11 @@ export default async function AdminLayout({
             <Link
               key={item.href}
               href={item.href}
-              className="flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-brand"
+              className="group flex items-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-medium text-slate-600 transition-all duration-200 hover:translate-x-1 hover:bg-slate-100 hover:text-brand"
             >
-              <span>{item.icon}</span>
+              <span className="inline-block transition-transform duration-200 group-hover:scale-125">
+                {item.icon}
+              </span>
               {item.label}
             </Link>
           ))}

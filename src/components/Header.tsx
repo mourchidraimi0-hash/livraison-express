@@ -2,6 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getSession } from "@/lib/auth";
 import { logoutAction } from "@/app/actions/auth";
+import MotionLink from "@/components/motion/MotionLink";
+import NavLink from "@/components/motion/NavLink";
 
 export default async function Header() {
   const session = await getSession();
@@ -9,13 +11,13 @@ export default async function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 text-brand">
+        <Link href="/" className="group flex items-center gap-2 text-brand">
           <Image
             src="/logo-mark.png"
             alt="LivraisonExpress"
             width={40}
             height={24}
-            className="h-9 w-auto"
+            className="h-9 w-auto transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3"
             priority
           />
           <span className="text-lg font-bold tracking-tight">
@@ -24,20 +26,10 @@ export default async function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-          <Link href="/" className="hover:text-brand">
-            Home
-          </Link>
-          <Link href="/suivi" className="hover:text-brand">
-            Track a Package
-          </Link>
-          <Link href="/devis" className="hover:text-brand">
-            Request a Quote
-          </Link>
-          {session?.role === "ADMIN" && (
-            <Link href="/admin" className="hover:text-brand">
-              Admin
-            </Link>
-          )}
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/suivi">Track a Package</NavLink>
+          <NavLink href="/devis">Request a Quote</NavLink>
+          {session?.role === "ADMIN" && <NavLink href="/admin">Admin</NavLink>}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -66,12 +58,12 @@ export default async function Header() {
               >
                 Log in
               </Link>
-              <Link
+              <MotionLink
                 href="/devis"
-                className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark"
+                className="rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-dark"
               >
                 Ship a Package
-              </Link>
+              </MotionLink>
             </>
           )}
         </div>

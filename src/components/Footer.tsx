@@ -30,17 +30,17 @@ export default function Footer() {
           </h3>
           <ul className="mt-3 space-y-2 text-sm text-slate-300">
             <li>
-              <Link href="/" className="hover:text-accent">
+              <Link href="/" className="transition-colors hover:text-accent">
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/suivi" className="hover:text-accent">
+              <Link href="/suivi" className="transition-colors hover:text-accent">
                 Track a Package
               </Link>
             </li>
             <li>
-              <Link href="/devis" className="hover:text-accent">
+              <Link href="/devis" className="transition-colors hover:text-accent">
                 Request a Quote
               </Link>
             </li>
@@ -53,12 +53,12 @@ export default function Footer() {
           </h3>
           <ul className="mt-3 space-y-2 text-sm text-slate-300">
             <li>
-              <Link href="/connexion" className="hover:text-accent">
+              <Link href="/connexion" className="transition-colors hover:text-accent">
                 Log in
               </Link>
             </li>
             <li>
-              <Link href="/inscription" className="hover:text-accent">
+              <Link href="/inscription" className="transition-colors hover:text-accent">
                 Create an Account
               </Link>
             </li>

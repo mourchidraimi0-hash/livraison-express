@@ -2,7 +2,9 @@
 
 import { useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 import { loginAction, type ActionState } from "@/app/actions/auth";
+import MotionButton from "@/components/motion/MotionButton";
 
 const initialState: ActionState = {};
 
@@ -22,11 +24,19 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
 
   return (
     <form action={formAction} className="space-y-5">
-      {state.error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-          {state.error}
-        </div>
-      )}
+      <AnimatePresence>
+        {state.error && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, x: -10 }}
+            animate={{ opacity: 1, height: "auto", x: [0, -8, 8, -4, 4, 0] }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4 }}
+            className="overflow-hidden rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+          >
+            {state.error}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <label className="block text-sm">
         <span className="mb-1.5 block font-medium text-slate-700">
@@ -52,13 +62,13 @@ export default function LoginForm({ redirectTo }: { redirectTo: string }) {
         />
       </label>
 
-      <button
+      <MotionButton
         type="submit"
         disabled={pending}
-        className="w-full rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-light disabled:opacity-60"
+        className="w-full rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-light disabled:opacity-60"
       >
         {pending ? "Logging in..." : "Log In"}
-      </button>
+      </MotionButton>
     </form>
   );
 }

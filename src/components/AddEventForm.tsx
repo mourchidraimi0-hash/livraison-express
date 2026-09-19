@@ -7,6 +7,7 @@ import {
 } from "@/app/actions/parcels";
 import { STATUT_COLIS_LABELS } from "@/lib/status";
 import type { StatutColis } from "@prisma/client";
+import MotionButton from "@/components/motion/MotionButton";
 
 const initialState: ActionState = {};
 
@@ -83,13 +84,13 @@ export default function AddEventForm({
         />
       </label>
 
-      <button
+      <MotionButton
         type="submit"
         disabled={pending}
-        className="w-full rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark disabled:opacity-60"
+        className="w-full rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-dark disabled:opacity-60"
       >
         {pending ? "Updating..." : "Update Tracking"}
-      </button>
+      </MotionButton>
     </form>
   );
 }

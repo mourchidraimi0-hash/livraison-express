@@ -7,6 +7,7 @@ import {
 } from "@/app/actions/quotes";
 import { STATUT_DEVIS_LABELS } from "@/lib/status";
 import type { StatutDevis } from "@prisma/client";
+import MotionButton from "@/components/motion/MotionButton";
 
 const initialState: ActionState = {};
 
@@ -59,13 +60,13 @@ export default function UpdateQuoteForm({
         />
       </label>
 
-      <button
+      <MotionButton
         type="submit"
         disabled={pending}
         className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-light disabled:opacity-60"
       >
         {pending ? "..." : "Save"}
-      </button>
+      </MotionButton>
 
       {state.error && (
         <p className="w-full text-xs text-red-600">{state.error}</p>

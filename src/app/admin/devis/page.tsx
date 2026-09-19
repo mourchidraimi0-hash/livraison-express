@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { STATUT_DEVIS_COLORS, STATUT_DEVIS_LABELS } from "@/lib/status";
 import UpdateQuoteForm from "@/components/UpdateQuoteForm";
+import { StaggerGroup, StaggerItem } from "@/components/motion/StaggerGroup";
 
 export const metadata = {
   title: "Quote Requests — LivraisonExpress",
@@ -22,11 +23,11 @@ export default async function AdminDevisPage() {
           No quote requests yet.
         </p>
       ) : (
-        <div className="space-y-4">
+        <StaggerGroup onMount className="space-y-4">
           {quotes.map((quote) => (
-            <div
+            <StaggerItem
               key={quote.id}
-              className="rounded-2xl border border-slate-200 bg-white p-5"
+              className="rounded-2xl border border-slate-200 bg-white p-5 transition-shadow hover:shadow-md"
             >
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div>
@@ -62,9 +63,9 @@ export default async function AdminDevisPage() {
                 currentStatus={quote.status}
                 currentNote={quote.adminNote}
               />
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       )}
     </div>
   );

@@ -4,6 +4,8 @@ import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import StatusBadge from "@/components/StatusBadge";
 import { STATUT_DEVIS_COLORS, STATUT_DEVIS_LABELS } from "@/lib/status";
+import Reveal from "@/components/motion/Reveal";
+import { StaggerGroup, StaggerItem } from "@/components/motion/StaggerGroup";
 
 export const metadata = {
   title: "My Account — LivraisonExpress",
@@ -26,25 +28,28 @@ export default async function ComptePage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-brand">
-            Hi, {session.name.split(" ")[0]}
-          </h1>
-          <p className="mt-1 text-slate-500">
-            Find your packages and quote requests here.
-          </p>
+      <Reveal onMount>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-bold text-brand">
+              Hi, {session.name.split(" ")[0]}
+            </h1>
+            <p className="mt-1 text-slate-500">
+              Find your packages and quote requests here.
+            </p>
+          </div>
+          {session.role === "ADMIN" && (
+            <Link
+              href="/admin"
+              className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-light"
+            >
+              Go to Admin
+            </Link>
+          )}
         </div>
-        {session.role === "ADMIN" && (
-          <Link
-            href="/admin"
-            className="rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-light"
-          >
-            Go to Admin
-          </Link>
-        )}
-      </div>
+      </Reveal>
 
+      <Reveal onMount delay={0.1}>
       <section className="mt-10">
         <h2 className="text-lg font-semibold text-brand">My Packages</h2>
         {parcels.length === 0 ? (
@@ -64,7 +69,7 @@ export default async function ComptePage() {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {parcels.map((parcel) => (
-                  <tr key={parcel.id}>
+                  <tr key={parcel.id} className="transition-colors hover:bg-slate-50">
                     <td className="px-4 py-3 font-mono font-medium text-brand">
                       {parcel.trackingNumber}
                     </td>
@@ -89,7 +94,9 @@ export default async function ComptePage() {
           </div>
         )}
       </section>
+      </Reveal>
 
+      <Reveal onMount delay={0.2}>
       <section className="mt-10">
         <h2 className="text-lg font-semibold text-brand">
           My Quote Requests
@@ -99,11 +106,11 @@ export default async function ComptePage() {
             You haven&apos;t submitted any quote requests yet.
           </p>
         ) : (
-          <div className="mt-3 space-y-3">
+          <StaggerGroup onMount className="mt-3 space-y-3">
             {quotes.map((quote) => (
-              <div
+              <StaggerItem
                 key={quote.id}
-                className="rounded-2xl border border-slate-200 bg-white p-4"
+                className="rounded-2xl border border-slate-200 bg-white p-4 transition-shadow hover:shadow-md"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="text-sm font-medium text-slate-700">
@@ -121,11 +128,12 @@ export default async function ComptePage() {
                     dateStyle: "long",
                   }).format(quote.createdAt)}
                 </p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         )}
       </section>
+      </Reveal>
     </div>
   );
 }
